@@ -1,0 +1,487 @@
+<mvc:View
+    controllerName="project1.controller.View1"
+   xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:u="sap.ui.unified"
+    xmlns:core="sap.ui.core">
+
+    <Page
+        title="SAP Document AI - Invoice Extraction"
+        class="pageBackground">
+
+        <content>
+
+            <VBox class="mainContainer">
+
+                <!-- Header -->
+                <Panel
+                    expandable="false"
+                    class="uploadPanel">
+                     <VBox class="sapUiMediumMargin">
+
+                     <Label text="Document Type"/>
+
+                    <RadioButtonGroup
+                       id="rbDocumentType"
+                       columns="2"
+                       selectedIndex="-1"
+                       select=".onDocumentTypeChange">
+
+                    <buttons>
+
+                    <RadioButton text="Invoice"/>
+ 
+                    <RadioButton text="Custom"/>
+
+                     </buttons>
+
+                      </RadioButtonGroup>
+
+                       </VBox>
+
+                    <VBox class="sapUiMediumMargin">
+                       
+                        <Title
+                            text="Upload Data"
+                            level="H2"
+                            class="sectionTitle"/>
+
+                        <Text
+                            text="Upload an invoice in PDF, JPG, JPEG, or PNG format. SAP Document AI will automatically extract the details."
+                            class="sapUiSmallMarginBottom"/>
+
+                        <u:FileUploader
+                            id="invoiceUploader"
+                            width="40%"
+                            fileType="pdf,jpg,jpeg,png"
+                            change=".onInvoiceUpload"
+                            class="uploadBox"/>
+
+                        <Button
+                            text="Extract Document"
+                            type="Emphasized"
+                            icon="sap-icon://document-text"
+                            press=".onExtractDocument"
+                            class="extractButton sapUiMediumMarginTop"/>
+
+                    </VBox>
+
+                </Panel>
+
+                <!-- Results -->
+
+                <Panel
+                    expandable="false"
+                    class="resultsPanel sapUiMediumMarginTop">
+
+                    <VBox class="sapUiMediumMargin"
+                         id="invoiceSection"
+                         visible="false">
+
+                        <Title
+                            text="📊 Extracted Invoice Details"
+                            level="H2"
+                            class="sectionTitle"/>
+
+                        <Table
+                            width="100%"
+                            class="invoiceTable">
+
+                            <columns>
+
+                                <Column width="35%">
+                                    <Text text="Field"/>
+                                </Column>
+
+                                <Column width="65%">
+                                    <Text text="Extracted Value"/>
+                                </Column>
+
+                            </columns>
+
+                            <items>
+
+                                <ColumnListItem>
+
+                                    <cells>
+
+                                        <Text text="Invoice Number"/>
+
+                                        <Input
+                                            value="{invoice>/invoice/invoiceNumber}"
+                                            placeholder="Invoice Number"/>
+
+                                    </cells>
+
+                                </ColumnListItem>
+
+                                <ColumnListItem>
+
+                                    <cells>
+
+                                        <Text text="Invoice Date"/>
+
+                                        <DatePicker
+                                            value="{invoice>/invoice/invoiceDate}"
+                                            valueFormat="yyyy-MM-dd"
+                                            displayFormat="dd-MM-yyyy"/>
+
+                                    </cells>
+
+                                </ColumnListItem>
+
+                                <ColumnListItem>
+
+                                    <cells>
+
+                                        <Text text="Due Date"/>
+
+                                        <DatePicker
+                                            value="{invoice>/invoice/dueDate}"
+                                            valueFormat="yyyy-MM-dd"
+                                            displayFormat="dd-MM-yyyy"/>
+
+                                    </cells>
+
+                                </ColumnListItem>
+
+                                <ColumnListItem>
+
+                                    <cells>
+
+                                        <Text text="Supplier Name"/>
+
+                                        <Input
+                                            value="{invoice>/invoice/supplierName}"
+                                            placeholder="Supplier Name"/>
+
+                                    </cells>
+
+                                </ColumnListItem>
+
+                                <ColumnListItem>
+
+                                    <cells>
+
+                                        <Text text="Supplier Address"/>
+
+                                        <Input
+                                            value="{invoice>/invoice/supplierAddress}"
+                                            placeholder="Supplier Address"/>
+
+                                    </cells>
+
+                                </ColumnListItem>
+
+                                <ColumnListItem>
+
+                                    <cells>
+
+                                        <Text text="Supplier City"/>
+
+                                        <Input
+                                            value="{invoice>/invoice/supplierCity}"
+                                            placeholder="Supplier City"/>
+
+                                    </cells>
+
+                                </ColumnListItem>
+
+                                <ColumnListItem>
+
+                                    <cells>
+
+                                        <Text text="Buyer Name"/>
+
+                                        <Input
+                                            value="{invoice>/invoice/buyerName}"
+                                            placeholder="Buyer Name"/>
+
+                                    </cells>
+
+                                </ColumnListItem>
+
+                                <ColumnListItem>
+
+                                    <cells>
+
+                                        <Text text="Buyer Address"/>
+
+                                        <Input
+                                            value="{invoice>/invoice/buyerAddress}"
+                                            placeholder="Buyer Address"/>
+
+                                    </cells>
+
+                                </ColumnListItem>
+
+                                <ColumnListItem>
+
+                                    <cells>
+
+                                        <Text text="Buyer City"/>
+
+                                        <Input
+                                            value="{invoice>/invoice/buyerCity}"
+                                            placeholder="Buyer City"/>
+
+                                    </cells>
+
+                                </ColumnListItem>
+
+                                <ColumnListItem>
+
+                                    <cells>
+
+                                        <Text text="Currency"/>
+
+                                        <Input
+                                            value="{invoice>/invoice/currencyCode}"
+                                            placeholder="Currency"/>
+
+                                    </cells>
+
+                                </ColumnListItem>
+
+                                <ColumnListItem>
+
+                                    <cells>
+
+                                        <Text text="Net Amount"/>
+
+                                        <Input
+                                            value="{invoice>/invoice/netAmount}"
+                                            placeholder="Net Amount"/>
+
+                                    </cells>
+
+                                </ColumnListItem>
+
+                                <ColumnListItem>
+
+                                    <cells>
+
+                                        <Text text="Tax Amount"/>
+
+                                        <Input
+                                            value="{invoice>/invoice/taxAmount}"
+                                            placeholder="Tax Amount"/>
+
+                                    </cells>
+
+                                </ColumnListItem>
+
+                                <ColumnListItem>
+
+                                    <cells>
+
+                                        <Text text="Gross Amount"/>
+
+                                        <Input
+                                            value="{invoice>/invoice/grossAmount}"
+                                            placeholder="Gross Amount"/>
+
+                                    </cells>
+
+                                </ColumnListItem>
+
+                                <ColumnListItem>
+
+                                    <cells>
+
+                                        <Text text="Purchase Order"/>
+
+                                        <Input
+                                            value="{invoice>/invoice/purchaseOrder}"
+                                            placeholder="Purchase Order"/>
+
+                                    </cells>
+
+                                </ColumnListItem>
+
+                                <ColumnListItem>
+
+                                    <cells>
+
+                                        <Text text="Barcode"/>
+
+                                        <Input
+                                            value="{invoice>/invoice/barcode}"
+                                            placeholder="Barcode"/>
+
+                                    </cells>
+
+                                </ColumnListItem>
+
+                            </items>
+
+                        </Table>
+
+                    </VBox>
+                    <VBox
+    id="customSection"
+    visible="false"
+    class="sapUiMediumMargin">
+
+    <Title
+        text="📋 Extracted Employee Details"
+        level="H2"
+        class="sectionTitle"/>
+
+    <Table
+        width="100%"
+        class="invoiceTable">
+
+        <columns>
+
+            <Column width="35%">
+                <Text text="Field"/>
+            </Column>
+
+            <Column width="65%">
+                <Text text="Extracted Value"/>
+            </Column>
+
+        </columns>
+
+        <items>
+
+            <ColumnListItem>
+
+                <cells>
+
+                    <Text text="Employee Name"/>
+
+                    <Input
+                        value="{employee>/employee/employeeName}"
+                        placeholder="Employee Name"/>
+
+                </cells>
+
+            </ColumnListItem>
+
+            <ColumnListItem>
+
+                <cells>
+
+                    <Text text="Employee No"/>
+
+                    <Input
+                        value="{employee>/employee/employeeNo}"
+                        placeholder="Employee Number"/>
+
+                </cells>
+
+            </ColumnListItem>
+
+            <ColumnListItem>
+
+                <cells>
+
+                    <Text text="Joining Date"/>
+
+                    <DatePicker
+                        value="{employee>/employee/joiningDate}"
+                        valueFormat="yyyy-MM-dd"
+                        displayFormat="dd-MM-yyyy"/>
+
+                </cells>
+
+            </ColumnListItem>
+
+            <ColumnListItem>
+
+                <cells>
+
+                    <Text text="Bank Name"/>
+
+                    <Input
+                        value="{employee>/employee/bankName}"
+                        placeholder="Bank Name"/>
+
+                </cells>
+
+            </ColumnListItem>
+
+            <ColumnListItem>
+
+                <cells>
+
+                    <Text text="Designation"/>
+
+                    <Input
+                        value="{employee>/employee/designation}"
+                        placeholder="Designation"/>
+
+                </cells>
+
+            </ColumnListItem>
+
+            <ColumnListItem>
+
+                <cells>
+
+                    <Text text="Location"/>
+
+                    <Input
+                        value="{employee>/employee/location}"
+                        placeholder="Location"/>
+
+                </cells>
+
+            </ColumnListItem>
+
+            <ColumnListItem>
+
+                <cells>
+
+                    <Text text="Effective Work Days"/>
+
+                    <Input
+                        value="{employee>/employee/effectiveWorkDays}"
+                        placeholder="Effective Work Days"/>
+
+                </cells>
+
+            </ColumnListItem>
+              <ColumnListItem>
+
+                <cells>
+
+                    <Text text="Company Name"/>
+
+                    <Input
+                        value="{employee>/employee/companyname}"
+                        placeholder="Company Name"/>
+
+                </cells>
+
+            </ColumnListItem>
+              <ColumnListItem>
+
+                <cells>
+
+                    <Text text="Company Address"/>
+
+                    <Input
+                        value="{employee>/employee/companyaddress}"
+                        placeholder="Company Address"/>
+
+                </cells>
+
+            </ColumnListItem>
+
+        </items>
+
+    </Table>
+
+</VBox>
+                </Panel>
+
+            </VBox>
+
+        </content>
+
+    </Page>
+
+</mvc:View>

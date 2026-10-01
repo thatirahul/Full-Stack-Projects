@@ -1,0 +1,24 @@
+/* Enter your custom styles here */
+
+/* Whole Page */
+.pageBackground {
+    background: #f4f7fb;
+}
+
+/* Main Container */
+.mainContainer {
+    background: white;
+    margin: 30px auto;
+    padding: 30px;
+    border-radius: 14px;
+    max-width: 1399px;
+    box-shadow: 0 6px 20px rgba(0,0,0,.12);
+}
+
+/* Titles */
+.sectionTitle {
+    font-size: 22px;
+    font-weight: bold;
+    color: #0a6ed1;
+    margin-bottom: 15px;
+}

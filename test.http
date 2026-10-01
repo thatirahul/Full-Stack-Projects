@@ -1,0 +1,24 @@
+### Extract Invoice
+POST http://localhost:4004/odata/v4/invoice/ExtractInvoice
+Content-Type: application/json
+
+{
+    "fileName": "invoice.pdf",
+    "mimeType": "application/pdf",
+    "fileData": "JVBERi0xLjQKJcfsj6IKNSAwIG9iago8PAovVGl0bGUgKP7..."
+}
+
+###
+GET http://localhost:4004/odata/v4/invoice/Invoices
+
+
+### Create Schema
+
+POST http://localhost:4004/odata/v4/invoice/CreateSchema
+Content-Type: application/json
+
+
+{
+    "schemaName": "EmployeeInformation",
+    "description": "Employee details extraction"
+}
