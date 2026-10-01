@@ -1,0 +1,52 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:unified="sap.ui.unified">
+
+    <Dialog
+        title="Profile Photo"
+        contentWidth="400px">
+
+        <VBox
+            class="sapUiMediumMargin1"
+            alignItems="Center">
+
+            <Avatar
+                id="previewAvatar"
+                displayShape="Circle"
+                displaySize="XL"
+                class="sapUiSmallMarginBottom"/>
+
+            <Button
+                text="Capture Photo"
+                icon="sap-icon://camera"
+                press=".onCapturePhoto"
+                width="220px"
+                class="sapUiSmallMarginBottom"/>
+                
+
+            <unified:FileUploader
+                id="photoUploader"
+                width="220px"
+                buttonText="Upload from Computer"
+                fileType="jpg,jpeg,png"
+                sameFilenameAllowed="true"
+                change=".onPhotoSelected"/>
+
+        </VBox>
+
+        <beginButton>
+            <Button
+                text="Save"
+                press=".onSaveProfilePhoto"/>
+        </beginButton>
+
+        <endButton>
+            <Button
+                text="Cancel"
+                press=".onClosePhotoDialog"/>
+        </endButton>
+
+    </Dialog>
+
+</core:FragmentDefinition>

@@ -1,0 +1,281 @@
+/* Enter your custom styles here */
+.sapUiTinyMargin{
+     background-color: #d0f4f4;
+}
+.uploadPanel {
+    background-color: #d9eaf7;
+    border: 1px solid #a2cde62c;
+    border-radius: 3px;
+    padding: 2rem;
+}
+.sapUiContentPadding{
+    /* padding: 1rem;  */
+    background-color: #d0f4f4;
+}
+
+.sapUiResponsiveMargin {
+    margin: 1rem; 
+    background-color: #f1eded;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 3rem;
+}
+
+.sapUiLargeMarginTop{
+     background-color: #d9eaf7;
+    border: 1px solid #a2cde62c;
+    border-radius: 3px;
+    padding: 2rem;
+}
+/* .sapUiSmallMargin{
+     background-color: #f1eded;
+    border: 1px solid #ccc;
+    border-radius: 1px;
+    padding: 1rem;
+}
+.sapUiContentPadding{
+     background-color: #d0f4f4;
+    border: 1px solid #a2cde62c;
+    border-radius: 1px;
+    padding: 1rem;
+} */
+.sapUiMediumMargin1{
+    background-color: #e2f1f5c5;
+    border: 1px solid #e7ecef;
+    border-radius: 3px;
+    padding: 2rem;
+}
+.sapMPage {
+    background: #afccf8;
+}
+/*=========================================================
+    PANEL
+=========================================================*/
+.employeePanel {
+    background: #afccf8;
+    border: none;
+    border-radius: 14px;
+    box-shadow:0 4px 15px rgba(0,0,0,.08);
+    overflow: hidden;
+}
+/*=========================================================
+    TOOLBAR
+=========================================================*/
+.employeeToolbar{
+    background:#1976d2 !important;
+    min-height:45px;
+    padding:6px 12px;
+
+    border-top-left-radius:14px;
+    border-top-right-radius:14px;
+}
+
+.employeeToolbar .sapMTitle{
+    color:white !important;
+    font-size:22px;
+    font-weight:bold;
+}
+/*=========================================================
+    TOOLBAR BUTTONS
+=========================================================*/
+.excelButton{
+    margin-right:10px;
+}
+.excelButton .sapMBtnInner{
+    border-radius:22px;
+    font-weight:bold;
+    padding-left:18px;
+    padding-right:18px;
+}
+.refreshButton .sapMBtnInner{
+    background:white !important;
+    color:#1976d2 !important;
+    border:none;
+    border-radius:22px;
+    font-weight:bold;
+    padding-left:16px;
+    padding-right:16px;
+}
+
+.refreshButton:hover .sapMBtnInner{
+    background:#e8f2ff !important;
+}
+
+.employeeVBox{
+     padding:8px 15px;
+}
+/*=========================================================
+    TABLE
+=========================================================*/
+.employeeTable{
+    border:1px solid #e4e8ef;
+    border-radius:10px;
+    overflow:hidden;
+}
+
+.employeeTable .sapMListTblHeaderCell{
+    background:#1976d2 !important;
+    border:none;
+}
+.employeeTable .sapMListTblHeaderCell .sapMText{
+    color:white !important;
+    font-size:15px;
+    font-weight:600;
+}
+
+.employeeRow{
+    background:white;
+    transition:0.25s ease;
+}
+.employeeRow:hover{
+    background:#eef6ff !important;
+}
+
+.employeeTable .sapMListTblCell{
+    padding-top:10px;
+    padding-bottom:10px;
+    border-bottom:1px solid #edf1f7;
+}
+
+.employeeId{
+   color:#1976d2;
+    font-weight:bold;
+}
+
+.employeeTable .sapMText{
+    font-size:14px;
+    color:#2f3b4a;
+}
+
+.editButton .sapMBtnInner{
+    width:32px;
+    height:32px;
+    border-radius:50%;
+    border:1px solid #d7dde5;
+    background:white;
+    transition:0.3s;
+}
+
+/* .editButton .sapUiIcon{
+
+    color:#1976d2;
+
+} */
+
+.editButton:hover .sapMBtnInner{
+
+    background:#1976d2;
+
+    border-color:#1976d2;
+
+}
+
+.editButton:hover .sapUiIcon{
+
+    color:white;
+
+}
+
+.sapMLIBTypeNavigation{
+
+    transition:.25s;
+
+}
+
+.sapMLIBTypeNavigation:hover{
+
+    background:#eef6ff !important;
+
+}
+
+/* ::-webkit-scrollbar{
+
+    height:8px;
+
+    width:8px;
+
+}
+::-webkit-scrollbar-thumb{
+
+    background:#1976d2;
+
+    border-radius:20px;
+
+}
+::-webkit-scrollbar-track{
+
+    background:#edf2f7;
+
+} */
+
+.employeePanel{
+
+    transition:0.3s;
+
+}
+
+.employeePanel:hover{
+
+    box-shadow:0 10px 25px rgba(0,0,0,0.12);
+
+}
+
+.sapMBtn{
+    transition:0.25s;
+}
+.sapMBtn:hover{
+    transform:translateY(-1px);
+}
+
+.customHeaderBar {
+    background-color: #1976d2 !important;
+    min-height: 45px;
+    padding: 6px 12px;  
+}
+.customHeaderBar .sapMTitle {
+    color: white !important;
+    font-size: 22px;
+    font-weight: bold;
+}
+.navPage .sapMPageHeader{
+    background:#1976d2 !important;
+    border-bottom:none;
+    box-shadow:0 2px 8px rgba(0,0,0,.15);
+}
+.navPage .sapMPageHeader .sapMTitle{
+    color:white !important;
+    font-size:18px;
+    font-weight:bold;
+}
+/* Back button icon */
+.navPage .sapMPageHeader .sapMBtnIcon {
+    color: #ffffff !important;
+}
+
+/* Keep the background transparent on hover, active and focus */
+.navPage .sapMPageHeader .sapMBtnInner:hover,
+.navPage .sapMPageHeader .sapMBtnInner:focus,
+.navPage .sapMPageHeader .sapMBtnInner:active {
+    background: transparent !important;
+    border-color: transparent !important;
+}
+
+/* Keep the icon white in all states */
+.navPage .sapMPageHeader .sapMBtnInner:hover .sapMBtnIcon,
+.navPage .sapMPageHeader .sapMBtnInner:focus .sapMBtnIcon,
+.navPage .sapMPageHeader .sapMBtnInner:active .sapMBtnIcon {
+    color: #fff !important;
+}
+
+.employeeAvatar {
+    border: 4px solid #a4c1ea;
+    border-radius: 50%;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    background: #a5c5f3;
+}
+.employeeName {
+    font-size: 1.8rem !important;
+    font-weight: 700 !important;
+    color: #1f2937;
+    margin-bottom: 0.4rem;
+}

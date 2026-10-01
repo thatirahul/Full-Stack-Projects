@@ -1,0 +1,239 @@
+<mvc:View
+    controllerName="project1.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:u="sap.ui.unified"
+    displayBlock="true"
+>
+    <Page class="sapUiContentPadding">
+        <customHeader>
+            <Bar class="customHeaderBar">
+                <contentLeft>
+                    <core:Icon
+                        src="sap-icon://employee"
+                        size="1.4rem"
+                    />
+                </contentLeft>
+
+                <contentMiddle>
+                    <Title text="Employee Management System" />
+                </contentMiddle>
+            </Bar>
+        </customHeader>
+        <content>
+            <!-- Upload Section -->
+            <!-- <Panel
+                headerText="Upload Image"
+                class="uploadPanel"
+            >
+                <VBox>
+                    <HBox
+                        alignItems="Center"
+                        class="sapUiSmallMarginBottom"
+                    >
+                        <Label
+                            text="Select Image File"
+                            class="sapUiTinyMarginEnd"
+                        />
+
+                        <Text
+                            id="selectedFileName"
+                            text="No file selected"
+                        />
+                    </HBox>
+
+                    <u:FileUploader
+                        id="fileUploader"
+                        width="320px"
+                        buttonText="Choose File"
+                        buttonOnly="true"
+                        icon="sap-icon://upload"
+                        change=".onFileChange"
+                        class="sapUiSmallMarginBottom"
+                    />
+
+                    <Image
+                        id="imagePreview"
+                        width="200px"
+                        height="150px"
+                        visible="false"
+                        densityAware="false"
+                        class="sapUiSmallMarginBottom"
+                    />
+
+                    <Label
+                        text="Description"
+                        class="sapUiSmallMarginTop sapUiTinyMarginBottom"
+                    />
+
+                    <Input
+                        id="descriptionInput"
+                        placeholder="Enter description..."
+                        width="320px"
+                        class="sapUiSmallMarginBottom"
+                    />
+
+                    <Button
+                        text="Upload to CAP"
+                        icon="sap-icon://upload-to-cloud"
+                        type="Emphasized"
+                        width="140px"
+                        press=".onUpload"
+                    />
+                </VBox>
+            </Panel> -->
+
+            <!-- Stored Images Section -->
+            <!-- <Panel class="sapUiLargeMarginTop storedImagesPanel">
+                <headerToolbar>
+                    <OverflowToolbar>
+                        <Title
+                            text="Stored Images"
+                            level="H4"
+                        />
+
+                        <ToolbarSpacer />
+
+                        <Button
+                            text="Refresh"
+                            icon="sap-icon://refresh"
+                            type="Transparent"
+                            press=".onRefresh"
+                        />
+                    </OverflowToolbar>
+                </headerToolbar>
+
+                <Table
+                    id="imagesTable"
+                    items="{/Images}"
+                    inset="false"
+                    growing="true"
+                >
+                    <columns>
+                        <Column width="90px">
+                            <Text text="Preview" />
+                        </Column>
+
+                        <Column width="250px">
+                            <Text text="File Name" />
+                        </Column>
+
+                        <Column width="200px">
+                            <Text text="MIME Type" />
+                        </Column>
+
+                        <Column width="250px">
+                            <Text text="Description" />
+                        </Column>
+
+                        <Column width="220px">
+                            <Text text="Created At" />
+                        </Column>
+                    </columns>
+
+                    <items>
+                        <ColumnListItem>
+                            <cells>
+                                <Image
+                                    src="{ path: 'imageData', formatter: '.formatImage' }"
+                                    width="60px"
+                                    height="40px"
+                                    densityAware="false"
+                                />
+
+                                <Text text="{fileName}" />
+
+                                <Text text="{mimeType}" />
+
+                                <Text text="{description}" />
+
+                                <Text text="{createdAt}" />
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </Panel> -->
+
+            <Panel class="employeePanel sapUiLargeMarginTop">
+                <headerToolbar>
+                    <Toolbar class="employeeToolbar">
+
+                        <Title text="Employee Details"
+                              class="employeeTitle" />
+
+                        <ToolbarSpacer />
+                        <Button
+                        text="Choose Excel"
+                        icon="sap-icon://excel-attachment"
+                        press=".onOpenExcelDialog"
+                        type="Emphasized"
+                         class="excelButton"
+                       />
+                        <Button
+                            icon="sap-icon://refresh"
+                            text="Refresh"
+                            tooltip="Refresh Employees"
+                            press=".onRefreshEmployees"
+                            class="refreshButton"
+                        />
+                    </Toolbar>
+                </headerToolbar>
+                <VBox  class="employeeVBox">
+                    <!-- <Button
+                        text="Choose Excel"
+                        icon="sap-icon://excel-attachment"
+                        press=".onOpenExcelDialog"
+                        type="Emphasized"
+                    /> -->
+
+                    <Table
+                        id="employeeTable"
+                        items="{/Employees}"
+                        mode="None"
+                        class="employeeTable"
+                    >
+                        <columns>
+                            <Column>
+                                <Text text="Employee ID" />
+                            </Column>
+                            <Column>
+                                <Text text="Name" />
+                            </Column>
+                            <Column>
+                                <Text text="Department" />
+                            </Column>
+                            <Column>
+                                <Text text="Email" />
+                            </Column>
+                            <Column>
+                                <Text text="Actions" />
+                            </Column>
+                        </columns>
+
+                        <items>
+                            <ColumnListItem
+                                type="Active"
+                                press=".onEmployeeRowPress"
+                                class="employeeRow"
+                            >
+                                <cells>
+                                    <Text text="{EmployeeID}" />
+                                    <Text text="{Name}" />
+                                    <Text text="{Department}" />
+                                    <Text text="{Email}" />
+
+                                    <Button
+                                        icon="sap-icon://edit"
+                                        press=".onEditPress"
+                                         class="editButton"
+                                    />
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </VBox>
+            </Panel>
+        </content>
+    </Page>
+</mvc:View>

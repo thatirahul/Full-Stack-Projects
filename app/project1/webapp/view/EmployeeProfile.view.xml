@@ -1,0 +1,304 @@
+<mvc:View
+    controllerName="project1.controller.EmployeeProfile"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+>
+    <Page
+        showNavButton="true"
+        navButtonPress="onNavBack"
+        class="navPage"
+        title="Employee Profile">
+        <content>
+            <!-- Employee Header -->
+            <HBox
+                class="sapUiMediumMargin"
+                alignItems="Center"
+            >
+                <!-- Profile Photo -->
+                <VBox
+                    width="180px"
+                    alignItems="Center"
+                >
+                    <Avatar
+                        id="employeeAvatar"
+                        displayShape="Circle"
+                        displaySize="XL"
+                        src="{employee>/PhotoUrl}"
+                        fallbackIcon="sap-icon://employee"
+                        class="employeeAvatar"
+                    />
+
+                    <Button
+                        class="sapUiTinyMarginTop"
+                        text="{= ${employee>/ProfilePhoto} ? 'Change Profile' : 'Add Profile Photo'}"
+                        icon="sap-icon://camera"
+                        press=".onProfilePhotoPress"
+                    />
+                </VBox>
+
+                <!-- Employee Details -->
+                <VBox class="sapUiMediumMarginBegin">
+                    <Title
+                        text="{employee>/Name}"
+                        level="H2"
+                         class="employeeName"
+                    />
+
+                    <ObjectAttribute
+                        title="Employee ID"
+                        text="{employee>/EmployeeID}"
+                    />
+
+                    <ObjectAttribute
+                        title="Department"
+                        text="{employee>/Department}"
+                    />
+
+                    <ObjectAttribute
+                        title="Email"
+                        text="{employee>/Email}"
+                    />
+                </VBox>
+            </HBox>
+            <IconTabBar>
+                <items>
+                    <!-- Personal Information -->
+                    <IconTabFilter
+                        key="personal"
+                        text="Personal Information"
+                    >
+                        <Panel class="sapUiResponsiveMargin">
+                            <headerToolbar>
+                                <Toolbar>
+                                    <Title text="Personal Details" />
+                                    <ToolbarSpacer />
+                                    <Button
+                                        text="Add Personal Info"
+                                        press="onPersonalInfoPress"
+                                        visible="{= !${employee>/personalInfoExists} }"
+                                    />
+                                    <Button
+                                        text="Edit"
+                                        icon="sap-icon://edit"
+                                        press="onEditPersonalInfo"
+                                        visible="{employee>/personalInfoExists}"
+                                    />
+                                </Toolbar>
+                            </headerToolbar>
+
+                            <l:Grid
+                                defaultSpan="XL4 L4 M6 S12"
+                                class="sapUiMediumMargin"
+                            >
+                                <VBox>
+                                    <Title text="Contact Details" />
+                                    <Label text="Mobile" />
+                                    <Text
+                                        text="{employee>/personalInfo/Mobile}"
+                                    />
+
+                                    <Label text="Home Phone" />
+                                    <Text
+                                        text="{employee>/personalInfo/HomePhone}"
+                                    />
+                                </VBox>
+
+                                <VBox>
+                                    <Title text="Address Details" />
+                                    <Label text="Address" />
+                                    <Text
+                                        text="{employee>/personalInfo/Address}"
+                                    />
+
+                                    <Label text="City" />
+                                    <Text
+                                        text="{employee>/personalInfo/City}"
+                                    />
+                                </VBox>
+
+                                <VBox>
+                                    <Title text="Location" />
+                                    <Label text="State" />
+                                    <Text
+                                        text="{employee>/personalInfo/State}"
+                                    />
+
+                                    <Label text="Country" />
+                                    <Text
+                                        text="{employee>/personalInfo/Country}"
+                                    />
+                                </VBox>
+                            </l:Grid>
+                        </Panel>
+                        <!-- <Panel
+                            headerText="Bank Details"
+                            class="sapUiResponsiveMargin"
+                        >
+                            <VBox class="sapUiMediumMargin">
+                                <Label text="Bank Name" />
+                                <Text
+                                    text="{employee>/personalInfo/BankName}"
+                                />
+
+                                <Label text="Account Number" />
+                                <Text
+                                    text="{employee>/personalInfo/AccountNumber}"
+                                />
+
+                                <Label text="IFSC" />
+                                <Text text="{employee>/personalInfo/IFSC}" />
+                            </VBox>
+                        </Panel> -->
+                    </IconTabFilter>
+
+                    <!-- Employment Information -->
+                    <IconTabFilter
+                        key="employment"
+                        text="Employment Information"
+                    >
+                        <Panel class="sapUiResponsiveMargin">
+                            <headerToolbar>
+                                <Toolbar>
+                                    <Title text="Employment Details" />
+                                    <ToolbarSpacer />
+                                    <Button
+                                        text="Add Employment Info"
+                                        press="onEmploymentInfoPress"
+                                        visible="{= !${employee>/employmentInfoExists} }"
+                                    />
+                                    <Button
+                                        text="Edit"
+                                        icon="sap-icon://edit"
+                                        press="onEditEmploymentInfo"
+                                        visible="{employee>/employmentInfoExists}"
+                                    />
+                                </Toolbar>
+                            </headerToolbar>
+
+                            <l:Grid
+                                defaultSpan="XL6 L6 M6 S12"
+                                class="sapUiMediumMargin"
+                            >
+                                <VBox>
+                                    <Title text="Job Details" />
+
+                                    <Label text="Designation" />
+                                    <Text
+                                        text="{employee>/employmentInfo/Designation}"
+                                    />
+
+                                    <Label text="Employment Type" />
+                                    <Text
+                                        text="{employee>/employmentInfo/EmploymentType}"
+                                    />
+
+                                    <Label text="Joining Date" />
+                                    <Text
+                                        text="{employee>/employmentInfo/JoiningDate}"
+                                    />
+                                </VBox>
+
+                                <VBox>
+                                    <Title text="Reporting Details" />
+
+                                    <Label text="Manager" />
+                                    <Text
+                                        text="{employee>/employmentInfo/Manager}"
+                                    />
+
+                                    <Label text="Status" />
+                                    <ObjectStatus
+                                        text="{employee>/employmentInfo/Status}"
+                                    />
+                                </VBox>
+                            </l:Grid>
+                        </Panel>
+                    </IconTabFilter>
+
+                    <!-- Education Information -->
+                    <IconTabFilter
+                        key="education"
+                        text="Education Information"
+                    >
+                        <Panel class="sapUiResponsiveMargin">
+                            <headerToolbar>
+                                <Toolbar>
+                                    <Title text="Education Details" />
+                                    <ToolbarSpacer />
+                                    <Button
+                                        text="Add Education Info"
+                                        press="onEducationInfoPress"
+                                        visible="{= !${employee>/disableAddEducation} }"
+                                    />
+                                </Toolbar>
+                            </headerToolbar>
+
+                            <VBox
+                                class="sapUiMediumMargin"
+                                items="{employee>/educationInfo}"
+                            >
+                                <Panel
+                                    expandable="true"
+                                    expanded="true"
+                                >
+                                    <headerToolbar>
+                                        <Toolbar>
+                                            <Title
+                                                text="{employee>EducationType}"
+                                            />
+
+                                            <ToolbarSpacer />
+
+                                            <Button
+                                                icon="sap-icon://edit"
+                                                tooltip="Edit Education"
+                                                press="onEditEducation"
+                                            />
+                                        </Toolbar>
+                                    </headerToolbar>
+                                    <l:Grid
+                                        defaultSpan="XL6 L6 M6 S12"
+                                        xmlns:l="sap.ui.layout"
+                                    >
+                                        <VBox>
+                                            <Label text="Qualification" />
+                                            <Text
+                                                text="{employee>Qualification}"
+                                            />
+
+                                            <Label text="Specialization" />
+                                            <Text
+                                                text="{employee>Specialization}"
+                                            />
+
+                                            <Label text="Grade" />
+                                            <Text text="{employee>Grade}" />
+                                        </VBox>
+
+                                        <VBox>
+                                            <Label text="Institution" />
+                                            <Text
+                                                text="{employee>Institution}"
+                                            />
+
+                                            <Label text="Passing Year" />
+                                            <Text
+                                                text="{employee>PassingYear}"
+                                            />
+
+                                            <Label text="Percentage" />
+                                            <Text
+                                                text="{employee>Percentage}"
+                                            />
+                                        </VBox>
+                                    </l:Grid>
+                                </Panel>
+                            </VBox>
+                        </Panel>
+                    </IconTabFilter>
+                </items>
+            </IconTabBar>
+        </content>
+    </Page>
+</mvc:View>
